@@ -23,7 +23,7 @@ object deriveJson {
     val mapping = (elemNames zip elemInstances).toMap
 
     Decoder[String].emap { name =>
-      mapping.get(name).fold(Left(s"Invalid value `$name`"))(Right(_))
+      mapping.get(name).fold(Left(s"Invalid value `\$name`"))(Right(_))
     }
   }
 

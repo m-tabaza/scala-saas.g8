@@ -52,7 +52,7 @@ class UserImpl[F[_]: Sync](using xa: Transactor[F])(using
         sendOtpAttempt <-
           if shouldSendOtp then
             sms
-              .send(to = phone, message = s"Your verification code is $otp")
+              .send(to = phone, message = s"Your verification code is \$otp")
               .attempt
           else ().asRight.pure
       } yield sendOtpAttempt match {
@@ -105,7 +105,7 @@ object UserImpl {
 
   def getUserIdByPhone(phone: PhoneNumber): Query[UserId] =
     sql"""
-    | SELECT id FROM users WHERE phone = $phone
+    | SELECT id FROM users WHERE phone = \$phone
     """.stripMargin.query
 
   type UserIsVerified = Boolean
@@ -116,7 +116,7 @@ object UserImpl {
   ): Query[(UserId, HashedPassword, UserIsVerified)] =
     sql"""
     | SELECT id, hashed_password, (verified_at IS NOT NULL) FROM users
-    | WHERE phone = $phone
+    | WHERE phone = \$phone
     """.stripMargin.query
 
   def insertUser(
@@ -129,7 +129,7 @@ object UserImpl {
     sql"""
     | INSERT INTO users 
     | (phone, name, birth_date, gender, hashed_password)
-    | VALUES ($phone, $name, $birthDate, $gender, $hashedPassword)
+    | VALUES (\$phone, \$name, \$birthDate, \$gender, \$hashedPassword)
     | ON CONFLICT (phone) DO NOTHING
     | RETURNING id
     """.stripMargin.query
@@ -138,27 +138,27 @@ object UserImpl {
     sql"""
     | SELECT value, expires_at
     | FROM user_otps
-    | WHERE user_id = $userId
+    | WHERE user_id = \$userId
     |   AND expires_at > (NOW() AT TIME ZONE 'utc')
     """.stripMargin.query
 
   def deleteUserOtp(userId: UserId): Update =
-    sql"DELETE FROM user_otps WHERE user_id = $userId".update
+    sql"DELETE FROM user_otps WHERE user_id = \$userId".update
 
   def insertUserOtp(userId: UserId): Query[(Short, Instant)] =
     sql"""
     | INSERT INTO user_otps (user_id)
-    | VALUES ($userId)
+    | VALUES (\$userId)
     | RETURNING value, expires_at
     """.stripMargin.query
 
   def setUserVerified(userId: UserId): Update =
     sql"""
     | DELETE FROM user_otps
-    | WHERE user_id = $userId;
+    | WHERE user_id = \$userId;
     |
     | UPDATE users SET verified_at = (NOW() AT TIME ZONE 'utc')
-    | WHERE id = $userId
+    | WHERE id = \$userId
     """.stripMargin.update
 
 }

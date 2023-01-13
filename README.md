@@ -155,10 +155,10 @@ import doobie.*
 import doobie.implicits.*
 
 def getThingById(id: Int): Query0[Thing] = 
-  sql"SELECT * FROM things WHERE id = $id".query
+  sql"SELECT * FROM things WHERE id = \$id".query
 
 def updateThing(id: Int, value: String): Update0 = 
-  sql"UPDATE things SET some_field = $value WHERE id = $id".update
+  sql"UPDATE things SET some_field = \$value WHERE id = \$id".update
 
 // query-tests.scala
 
@@ -186,11 +186,11 @@ Do _NOT_ do this:
 ```scala
 // BAD
 def getThingById(id: Int): ConnectionIO[Thing] = 
-  sql"SELECT * FROM things WHERE id = $id".query[Thing].unique
+  sql"SELECT * FROM things WHERE id = \$id".query[Thing].unique
 
 // BADDDDD
 def updateThing(id: Int, value: String): ConnectionIO[Int] = 
-  sql"UPDATE things SET some_field = $value WHERE id = $id".update.run
+  sql"UPDATE things SET some_field = \$value WHERE id = \$id".update.run
 ```
 
 These functions both return `ConnectionIO` directly, so the queries within them cannot be checked at test time.

@@ -1,5 +1,5 @@
-do $$
+do \$\$
 
 -- Insert seed data here
 
-END $$;
+END \$\$;

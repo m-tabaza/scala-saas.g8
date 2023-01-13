@@ -31,7 +31,7 @@ object ServerUtil {
       {
         val conf = com.zaxxer.hikari.HikariConfig()
         conf.setDriverClassName("org.postgresql.Driver")
-        conf.setJdbcUrl(s"jdbc:postgresql://$host/$dbName")
+        conf.setJdbcUrl(s"jdbc:postgresql://\$host/\$dbName")
         conf.setUsername(pgUser)
         conf.setPassword(pgPassword)
         conf.setMaximumPoolSize(10)

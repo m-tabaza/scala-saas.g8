@@ -36,7 +36,7 @@ object Logger {
       level: LogLevel,
       context: Map[String, String],
       logger: CatsLogger[F]
-  ): F[Unit] = ${ logCode('msg, 'error, 'level, 'context, 'logger) }
+  ): F[Unit] = \${ logCode('msg, 'error, 'level, 'context, 'logger) }
 
   def logCode[F[_]: Type](
       msg: Expr[String],
@@ -45,15 +45,15 @@ object Logger {
       context: Expr[Map[String, String]],
       logger: Expr[CatsLogger[F]]
   )(using Quotes) = '{
-    val l = $logger
-    val m = $msg
-    val level = $logLevel
-    val e = $error
-    val ctx = $context
+    val l = \$logger
+    val m = \$msg
+    val level = \$logLevel
+    val e = \$error
+    val ctx = \$context
 
     val contextStr: String =
       if ctx.isEmpty then ""
-      else s" ::: " + ctx.asJson.toString
+      else " ::: " + ctx.asJson.toString
 
     (level, e) match {
       case (LogLevel.Info, _)        => l.info(m + contextStr)
@@ -64,7 +64,7 @@ object Logger {
 
   val ioLogger = Slf4jLogger.getLogger[cats.effect.IO]
 
-  inline def debug[A](inline a: A): A = ${ debugCode('a) }
+  inline def debug[A](inline a: A): A = \${ debugCode('a) }
 
   private def debugCode[A: Type](a: Expr[A])(using Quotes): Expr[A] = {
     import quotes.reflect.*
@@ -79,13 +79,13 @@ object Logger {
     val pos = Position.ofMacroExpansion
     val posStr = Expr {
       val path = pos.sourceFile.getJPath.map(_.toString).getOrElse("")
-      s"$path:${pos.startLine + 1}:${pos.startColumn + 1}"
+      s"\$path:\${pos.startLine + 1}:\${pos.startColumn + 1}"
     }
 
     '{
-      val aVal = $a
+      val aVal = \$a
       println(
-        s"${$name} :: (${compiletime.codeOf($a)}) : ${$tpe} = $aVal @ ${$posStr}"
+        s"\${\$name} :: (\${compiletime.codeOf(\$a)}) : \${\$tpe} = \$aVal @ \${\$posStr}"
       )
       aVal
     }

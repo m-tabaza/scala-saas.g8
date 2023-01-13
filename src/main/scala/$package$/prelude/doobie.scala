@@ -22,7 +22,7 @@ object deriveMeta {
     Meta[String].imap { name =>
       mapping
         .get(name)
-        .getOrElse(throw Exception(s"Invalid value `$name`"))
+        .getOrElse(throw Exception(s"Invalid value `\$name`"))
     }(_.toString)
   }
 
@@ -42,11 +42,11 @@ given LogHandler = LogHandler { event =>
       Logger.ioLogger
         .error(logPrefix + s"""Failed Resultset Processing:
          |
-         |  ${s.linesIterator.dropWhile(_.trim.isEmpty).mkString("\n  ")}
+         |  \${s.linesIterator.dropWhile(_.trim.isEmpty).mkString("\n  ")}
          |
-         | arguments = [${a.mkString(", ")}]
-         |   elapsed = ${e1.toMillis.toString} ms exec + ${e2.toMillis.toString} ms processing (failed) (${(e1 + e2).toMillis.toString} ms total)
-         |   failure = ${t.getMessage}
+         | arguments = [\${a.mkString(", ")}]
+         |   elapsed = \${e1.toMillis.toString} ms exec + \${e2.toMillis.toString} ms processing (failed) (\${(e1 + e2).toMillis.toString} ms total)
+         |   failure = \${t.getMessage}
          """.stripMargin)
         .unsafeRunAsync(identity)
 
@@ -54,11 +54,11 @@ given LogHandler = LogHandler { event =>
       Logger.ioLogger
         .error(logPrefix + s"""Failed Statement Execution:
          |
-         |  ${s.linesIterator.dropWhile(_.trim.isEmpty).mkString("\n  ")}
+         |  \${s.linesIterator.dropWhile(_.trim.isEmpty).mkString("\n  ")}
          |
-         | arguments = [${a.mkString(", ")}]
-         |   elapsed = ${e1.toMillis.toString} ms exec (failed)
-         |   failure = ${t.getMessage}
+         | arguments = [\${a.mkString(", ")}]
+         |   elapsed = \${e1.toMillis.toString} ms exec (failed)
+         |   failure = \${t.getMessage}
          """.stripMargin)
         .unsafeRunAsync(identity)
     case _ => ()

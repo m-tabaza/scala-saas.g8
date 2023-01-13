@@ -19,7 +19,7 @@ def makeTestTransactor(
     pgPassword: String
 ) = Transactor.fromDriverManager[cats.effect.IO](
   "org.postgresql.Driver",
-  s"jdbc:postgresql://$host/$dbName",
+  s"jdbc:postgresql://\$host/\$dbName",
   pgUser,
   pgPassword
 )

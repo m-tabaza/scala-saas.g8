@@ -24,7 +24,7 @@ object Config {
     cats.effect.std.Env.make[F].get(key).flatMap {
       case Some(v) => v.pure
       case None =>
-        Exception(s"Undefined environment variable `$key`").raiseError
+        Exception(s"Undefined environment variable `\$key`").raiseError
     }
 
   def loadJsonFile[F[_]: Async, C: Decoder](path: Path) = for {

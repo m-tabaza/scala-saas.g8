@@ -4,7 +4,7 @@ import $project_name_camel_case$.prelude.{*, given}
 
 trait TaggedUUID[T <: String](val uuid: UUID)(using T: ValueOf[T]) {
 
-  final override def toString = s"${T.value}_${uuid}"
+  final override def toString = s"\${T.value}_\${uuid}"
 
 }
 
@@ -19,7 +19,7 @@ trait TaggedUUIDCompanion[T <: String, TUUID <: TaggedUUID[T]](using
   final def tag: Tag = T.value
 
   final def fromString(s: String) = s match {
-    case s"${t}_${uuid}" if t == tag =>
+    case s"\${t}_\${uuid}" if t == tag =>
       UUID.fromString(uuid).map(fromUUID)
     case _ => None
   }
@@ -31,7 +31,7 @@ trait TaggedUUIDCompanion[T <: String, TUUID <: TaggedUUID[T]](using
   given Decoder[TUUID] = Decoder[String].emap { s =>
     Either.fromOption(
       fromString(s),
-      s"Expected a tagged UUID of `$tag`, but found `$s`"
+      s"Expected a tagged UUID of `\$tag`, but found `\$s`"
     )
   }
 
@@ -45,7 +45,7 @@ trait TaggedUUIDCompanion[T <: String, TUUID <: TaggedUUID[T]](using
   given HttpCodec.PlainCodec[TUUID] = HttpCodec.string.mapDecode { idStr =>
     fromString(idStr) match {
       case None => {
-        val msg = s"Invalid $tag ID `$idStr`"
+        val msg = s"Invalid \$tag ID `\$idStr`"
         HttpDecodeResult.Error(msg, Exception(msg))
       }
       case Some(tuuid) => HttpDecodeResult.Value(tuuid)

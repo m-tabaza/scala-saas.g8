@@ -20,7 +20,7 @@ object PhoneNumber {
       case _ => None
     }
 
-  def parseErrorMsg(phoneStr: String) = s"Invalid phone number: $phoneStr"
+  def parseErrorMsg(phoneStr: String) = s"Invalid phone number: \$phoneStr"
 
   def fromStringEither(s: String) =
     Either.fromOption(fromString(s), Exception(parseErrorMsg(s)))
