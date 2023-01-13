@@ -1,0 +1,7 @@
+{
+  "host": "localhost",
+  "port": "5432",
+  "db": "$project_name_cabab_case$-dev",
+  "user": "user",
+  "password": "pass"
+}
