@@ -6,7 +6,7 @@
 * [Install Docker-Compose](https://docs.docker.com/compose/install/)
 
 To run the project:
-* `cd` into the `backend` directory
+* `cd` into the `$name$` directory
 * Run `docker-compose up -d`
 * Run `sbt`
   Within the SBT shell:
@@ -24,7 +24,7 @@ When using metals:
 * Wait for Metals to finish compilation - avoid running `reStart` before Metals is done compiling (keep an eye on the "Outptut" tab next to "Terminal")
 
 # Learning
-Scala 3 (in the backend) is used in a purely functional style. Many purely functional libraries from the [Typelevel](https://typelevel.org/) ecosystem are heavily utilized, and are better mastered as soon as possible:
+Many purely functional libraries from the [Typelevel](https://typelevel.org/) ecosystem are heavily utilized, and are better mastered as soon as possible:
 * [Cats](https://typelevel.org/cats/): purely functional abstractions
 * [Cats Effect](https://typelevel.org/cats-effect/): asynchronous IO and concurrency primitives
 * [Skunk](https://tpolecat.github.io/skunk/): Postgres database access
