@@ -1,12 +1,12 @@
-package $project_name_camel_case$.http.users
+package $package$.http.users
 
-import $project_name_camel_case$.core.users.Gender
-import $project_name_camel_case$.core.users.PhoneNumber
-import $project_name_camel_case$.core.users.UserAlgebra
-import $project_name_camel_case$.core.users.UserAlgebra.CreateUserResult
-import $project_name_camel_case$.http.prelude.*
-import $project_name_camel_case$.prelude.{_, given}
-import $project_name_camel_case$.core.users.UserId
+import $package$.core.users.Gender
+import $package$.core.users.PhoneNumber
+import $package$.core.users.UserAlgebra
+import $package$.core.users.UserAlgebra.CreateUserResult
+import $package$.http.prelude.*
+import $package$.prelude.{_, given}
+import $package$.core.users.UserId
 
 class SignupRoute[F[_]: Async](using users: UserAlgebra[F])
     extends HttpRoute[F] {

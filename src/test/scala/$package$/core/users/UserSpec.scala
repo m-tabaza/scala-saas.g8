@@ -1,6 +1,6 @@
-package $project_name_camel_case$.core.users
+package $package$.core.users
 
-import $project_name_camel_case$.prelude.{*, given}
+import $package$.prelude.{*, given}
 
 class UserSpec extends QueryChecks {
 

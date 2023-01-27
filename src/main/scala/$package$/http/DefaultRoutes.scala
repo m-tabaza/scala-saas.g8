@@ -1,7 +1,7 @@
-package $project_name_camel_case$.http
+package $package$.http
 
-import $project_name_camel_case$.prelude.{*, given}
-import $project_name_camel_case$.http.prelude.{*, given}
+import $package$.prelude.{*, given}
+import $package$.http.prelude.{*, given}
 
 class DefaultRoutes[F[_]: Async] extends HttpRoute[F] {
 

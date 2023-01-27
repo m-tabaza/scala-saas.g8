@@ -1,4 +1,4 @@
-package $project_name_camel_case$.http
+package $package$.http
 
 import cats.effect.Async
 import cats.effect.Resource

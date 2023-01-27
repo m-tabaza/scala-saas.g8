@@ -1,4 +1,4 @@
-package $project_name_camel_case$.prelude
+package $package$.prelude
 
 import java.util.UUID as JUUID
 

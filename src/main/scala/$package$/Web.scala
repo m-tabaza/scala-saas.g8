@@ -1,13 +1,13 @@
-package $project_name_camel_case$
+package $package$
 
 import cats.effect.*
 import doobie.util.transactor.Transactor
 import org.http4s.server.Router
-import $project_name_camel_case$.config.Env
-import $project_name_camel_case$.core.$project_name_pascal_case$Algebra
-import $project_name_camel_case$.core.$project_name_pascal_case$Impl
-import $project_name_camel_case$.http.prelude.*
-import $project_name_camel_case$.prelude.{*, given}
+import $package$.config.Env
+import $package$.core.$project_name_pascal_case$Algebra
+import $package$.core.$project_name_pascal_case$Impl
+import $package$.http.prelude.*
+import $package$.prelude.{*, given}
 import sttp.apispec.openapi.circe.yaml.*
 import sttp.tapir.docs.openapi.*
 import sttp.tapir.swagger.SwaggerUI

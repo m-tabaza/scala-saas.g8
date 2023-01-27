@@ -1,4 +1,4 @@
-package $project_name_camel_case$.prelude
+package $package$.prelude
 
 class QueryChecks extends munit.FunSuite with doobie.munit.IOChecker {
   override val transactor = xa

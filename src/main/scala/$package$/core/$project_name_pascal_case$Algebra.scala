@@ -1,6 +1,6 @@
-package $project_name_camel_case$.core
+package $package$.core
 
-import $project_name_camel_case$.core.users.UserAlgebra
+import $package$.core.users.UserAlgebra
 
 trait $project_name_pascal_case$Algebra[F[_]] {
 

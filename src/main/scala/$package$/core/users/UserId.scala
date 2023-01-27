@@ -1,8 +1,8 @@
-package $project_name_camel_case$.core.users
+package $package$.core.users
 
-import $project_name_camel_case$.prelude.{*, given}
-import $project_name_camel_case$.core.util.TaggedUUID
-import $project_name_camel_case$.core.util.TaggedUUIDCompanion
+import $package$.prelude.{*, given}
+import $package$.core.util.TaggedUUID
+import $package$.core.util.TaggedUUIDCompanion
 
 case class UserId(override val uuid: UUID) extends TaggedUUID["user"](uuid)
 object UserId extends TaggedUUIDCompanion["user", UserId] {

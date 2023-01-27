@@ -1,7 +1,7 @@
-package $project_name_camel_case$.core.users
+package $package$.core.users
 
 import com.google.i18n.phonenumbers.PhoneNumberUtil
-import $project_name_camel_case$.prelude.{*, given}
+import $package$.prelude.{*, given}
 
 class PhoneNumber private (val value: String) {
   override def toString = value

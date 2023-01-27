@@ -1,10 +1,10 @@
-package $project_name_camel_case$.core.users.auth
+package $package$.core.users.auth
 
 import at.favre.lib.crypto.bcrypt.BCrypt
 import pdi.jwt.JwtAlgorithm
 import pdi.jwt.JwtCirce
-import $project_name_camel_case$.config.AppSecret
-import $project_name_camel_case$.prelude.{*, given}
+import $package$.config.AppSecret
+import $package$.prelude.{*, given}
 
 class AuthImpl[F[_]](using F: ApplicativeThrow[F], appSecret: AppSecret)
     extends AuthAlgebra[F] {

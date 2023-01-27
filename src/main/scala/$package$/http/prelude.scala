@@ -1,4 +1,4 @@
-package $project_name_camel_case$.http.prelude
+package $package$.http.prelude
 
 import cats.ApplicativeError
 import cats.implicits.*
@@ -7,8 +7,8 @@ import sttp.tapir.Tapir
 import sttp.tapir.generic.auto.SchemaDerivation
 import sttp.tapir.docs.openapi.OpenAPIDocsInterpreter
 import sttp.tapir.json.circe.TapirJsonCirce
-import $project_name_camel_case$.core.users.auth.AuthAlgebra
-import $project_name_camel_case$.core.users.auth.UserJwtPayload
+import $package$.core.users.auth.AuthAlgebra
+import $package$.core.users.auth.UserJwtPayload
 
 export org.http4s.HttpRoutes
 export org.http4s.dsl.Http4sDsl as HttpDsl

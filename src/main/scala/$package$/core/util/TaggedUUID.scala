@@ -1,6 +1,6 @@
-package $project_name_camel_case$.core.util
+package $package$.core.util
 
-import $project_name_camel_case$.prelude.{*, given}
+import $package$.prelude.{*, given}
 
 trait TaggedUUID[T <: String](val uuid: UUID)(using T: ValueOf[T]) {
 

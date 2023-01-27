@@ -1,6 +1,6 @@
-package $project_name_camel_case$.config
+package $package$.config
 
-import $project_name_camel_case$.prelude.{*, given}
+import $package$.prelude.{*, given}
 
 import fs2.io.file.Path
 

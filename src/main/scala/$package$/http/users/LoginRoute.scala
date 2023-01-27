@@ -1,11 +1,11 @@
-package $project_name_camel_case$.http.users
+package $package$.http.users
 
-import $project_name_camel_case$.core.users.PhoneNumber
-import $project_name_camel_case$.core.users.UserAlgebra
-import $project_name_camel_case$.core.users.UserAlgebra.LoginResult
-import $project_name_camel_case$.core.users.UserId
-import $project_name_camel_case$.http.prelude.*
-import $project_name_camel_case$.prelude.{*, given}
+import $package$.core.users.PhoneNumber
+import $package$.core.users.UserAlgebra
+import $package$.core.users.UserAlgebra.LoginResult
+import $package$.core.users.UserId
+import $package$.http.prelude.*
+import $package$.prelude.{*, given}
 
 class LoginRoute[F[_]: Async](using users: UserAlgebra[F])
     extends HttpRoute[F] {

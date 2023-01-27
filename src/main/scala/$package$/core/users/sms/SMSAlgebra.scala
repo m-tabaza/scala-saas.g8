@@ -1,7 +1,7 @@
-package $project_name_camel_case$.core.users.sms
+package $package$.core.users.sms
 
-import $project_name_camel_case$.prelude.{*, given}
-import $project_name_camel_case$.core.users.PhoneNumber
+import $package$.prelude.{*, given}
+import $package$.core.users.PhoneNumber
 
 trait SMSAlgebra[F[_]] {
 

@@ -1,4 +1,4 @@
-package $project_name_camel_case$.prelude
+package $package$.prelude
 
 import org.typelevel.log4cats.slf4j.Slf4jLogger
 import org.typelevel.log4cats.Logger as CatsLogger

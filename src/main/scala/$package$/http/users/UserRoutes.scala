@@ -1,7 +1,7 @@
-package $project_name_camel_case$.http.users
+package $package$.http.users
 
-import $project_name_camel_case$.prelude.{*, given}
-import $project_name_camel_case$.core.$project_name_pascal_case$Algebra
+import $package$.prelude.{*, given}
+import $package$.core.$project_name_pascal_case$Algebra
 
 object UserRoutes {
 

@@ -1,4 +1,4 @@
-package $project_name_camel_case$.core.users.auth
+package $package$.core.users.auth
 
 trait AuthAlgebra[F[_]] {
 

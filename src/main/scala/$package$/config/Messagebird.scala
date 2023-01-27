@@ -1,8 +1,8 @@
-package $project_name_camel_case$.config
+package $package$.config
 
 import fs2.io.file.Path
-import $project_name_camel_case$.prelude.{*, given}
-import $project_name_camel_case$.config.Env
+import $package$.prelude.{*, given}
+import $package$.config.Env
 
 case class Messagebird(apiKey: String)
 object Messagebird {

@@ -1,6 +1,6 @@
-import $project_name_camel_case$.prelude.{*, given}
-import $project_name_camel_case$.core.users.*
-import $project_name_camel_case$.core.gyms.*
+import $package$.prelude.{*, given}
+import $package$.core.users.*
+import $package$.core.gyms.*
 
 import cats.effect.unsafe.implicits.*
 

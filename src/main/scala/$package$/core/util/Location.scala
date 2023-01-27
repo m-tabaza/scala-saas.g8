@@ -1,6 +1,6 @@
-package $project_name_camel_case$.core.util
+package $package$.core.util
 
-import $project_name_camel_case$.prelude.{*, given}
+import $package$.prelude.{*, given}
 import org.postgresql.geometric.PGpoint
 
 case class Location(lat: Double, long: Double)

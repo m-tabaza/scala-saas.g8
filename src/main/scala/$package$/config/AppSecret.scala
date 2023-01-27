@@ -1,8 +1,8 @@
-package $project_name_camel_case$.config
+package $package$.config
 
 import fs2.io.file.Path
-import $project_name_camel_case$.config.Env
-import $project_name_camel_case$.prelude.{*, given}
+import $package$.config.Env
+import $package$.prelude.{*, given}
 
 case class AppSecret(secret: String)
 object AppSecret {

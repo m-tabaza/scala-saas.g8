@@ -1,11 +1,11 @@
-package $project_name_camel_case$.core.users
+package $package$.core.users
 
-import $project_name_camel_case$.config
-import $project_name_camel_case$.prelude.{*, given}
+import $package$.config
+import $package$.prelude.{*, given}
 
 import auth.AuthImpl
 import sms.SMSImpl
-import $project_name_camel_case$.core.users.auth.UserJwtPayload
+import $package$.core.users.auth.UserJwtPayload
 
 class UserImpl[F[_]: Sync](using xa: Transactor[F])(using
     config.Messagebird,

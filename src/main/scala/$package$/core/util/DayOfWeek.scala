@@ -1,6 +1,6 @@
-package $project_name_camel_case$.core.util
+package $package$.core.util
 
-import $project_name_camel_case$.prelude.{*, given}
+import $package$.prelude.{*, given}
 
 enum DayOfWeek {
   case Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
